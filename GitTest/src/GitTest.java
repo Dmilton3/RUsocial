@@ -9,6 +9,7 @@ public class GitTest {
 
         System.out.println("This is a Test");
         System.out.println("This is a second test");
+        System.out.println("This is a the third Test");
 
         int check = 10;
         do{
