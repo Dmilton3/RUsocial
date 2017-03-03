@@ -9,6 +9,8 @@ public class GitTest {
 
         System.out.println("This is TOTALLY a Test");
 
+        System.out.println("Tre is a cracka!");
+
         int check = 10;
         do{
             System.out.println(check);
