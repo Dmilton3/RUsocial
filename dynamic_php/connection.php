@@ -12,6 +12,5 @@
 
          $db->setFetchMode(DB_FETCHMODE_ASSOC);
 
-
 }
     ?>

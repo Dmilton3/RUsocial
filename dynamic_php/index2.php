@@ -23,36 +23,26 @@ include "connection.php";    ?>
 
 <?php
 
-if(!empty($_POST['email']) && !empty($_POST['password']))
+if(!empty($_POST['username']) && !empty($_POST['password']))
 {
-    $email = mysql_real_escape_string($_POST['email']);
+    $username = mysql_real_escape_string($_POST['username']);
     $password = md5(mysql_real_escape_string($_POST['password']));
      
 
-    $checklogin = mysql_query("SELECT * FROM Users WHERE Email = '".$email."' AND Password = '".$password."'");
+    $checklogin = mysql_query("SELECT * FROM Users WHERE username = '".$username."' AND Password = '".$password."'");
      
     if(mysql_num_rows($checklogin) == 1)
     {
         $row = mysql_fetch_array($checklogin);
         $email = $row['Email'];
-        $username = $row['username']; 
+         
+        $_SESSION['username'] = $username;
        
         $_SESSION['Email'] = $email;
         $_SESSION['LoggedIn'] = 1;
         
-        if($username == "null"){
-
-            header("Location: UserCreation.php"); 
-
-        }
-        else
-        {
-
-        $_SESSION['username'] = $username;
-
         header("Location: RUsocial.php"); 
-    
-        } 
+     //   exit; 
     }
     else
     {
@@ -70,7 +60,7 @@ else
      
     <form method="post" action="index.php" name="loginform" id="loginform">
     <fieldset>
-        <label for="email">Email:</label><input type="text" name="email" id="email" /><br />
+        <label for="username">Username:</label><input type="text" name="username" id="username" /><br />
         <label for="password">Password:</label><input type="password" name="password" id="password" /><br />
         <input type="submit" name="login" id="login" value="Login" />
     </fieldset>
